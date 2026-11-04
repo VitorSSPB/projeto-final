@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipamentos Inoperantes - Controle de Equipamentos</title>
+  <link rel="stylesheet" href="../static/estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="logos-esquerda">
+      <img src="../static/img/logo_etec.png" alt="Etec Prof. Marcos Uchôas dos Santos Penchel - Cachoeira Paulista">
+    </div>
+    <h1>Controle de Equipamentos de Laboratório
+      <span>Sistema interno de chamados técnicos</span>
+    </h1>
+    <div class="logos-direita">
+      <img src="../static/img/logo_cps.png" alt="Centro Paula Souza">
+      <img src="../static/img/logo_sp.png" alt="Governo do Estado de São Paulo">
+    </div>
+  </header>
+  <nav>
+    <a href="abrir_chamado.html">Abrir chamado</a>
+    <a href="inoperantes.html" class="ativo">Equipamentos inoperantes</a>
+  </nav>
+
+  <main>
+    <h2>Equipamentos inoperantes</h2>
+    <p class="dica">Fila de manutenção: chamados ainda não resolvidos, do mais antigo para o mais novo.</p>
+
+    <div class="resumo">
+      <div><strong>2</strong>abertos</div>
+      <div><strong>1</strong>em andamento</div>
+      <div><strong>2</strong>laboratórios afetados</div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Patrimônio</th>
+          <th>Laboratório</th>
+          <th>Tipo</th>
+          <th>Problema</th>
+          <th>Status</th>
+          <th>Aberto em</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PAT-0105</td>
+          <td>Laboratório 2</td>
+          <td>Computador</td>
+          <td>PC 05 sem internet</td>
+          <td><span class="status em-andamento">Em andamento</span></td>
+          <td>03/11/2026</td>
+        </tr>
+        <tr>
+          <td>PAT-0002</td>
+          <td>Laboratório 1</td>
+          <td>Monitor</td>
+          <td>Monitor piscando e desligando sozinho</td>
+          <td><span class="status aberto">Aberto</span></td>
+          <td>04/11/2026</td>
+        </tr>
+        <tr>
+          <td>PAT-0106</td>
+          <td>Laboratório 2</td>
+          <td>Impressora</td>
+          <td>Papel atolando em toda impressão</td>
+          <td><span class="status aberto">Aberto</span></td>
+          <td>04/11/2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>Projeto Final de PA - Etec Prof. Marcos Uchôas dos Santos Penchel - Cachoeira Paulista</footer>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abrir Chamado - Controle de Equipamentos</title>
+  <link rel="stylesheet" href="../static/estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="logos-esquerda">
+      <img src="../static/img/logo_etec.png" alt="Etec Prof. Marcos Uchôas dos Santos Penchel - Cachoeira Paulista">
+    </div>
+    <h1>Controle de Equipamentos de Laboratório
+      <span>Sistema interno de chamados técnicos</span>
+    </h1>
+    <div class="logos-direita">
+      <img src="../static/img/logo_cps.png" alt="Centro Paula Souza">
+      <img src="../static/img/logo_sp.png" alt="Governo do Estado de São Paulo">
+    </div>
+  </header>
+  <nav>
+    <a href="abrir_chamado.html" class="ativo">Abrir chamado</a>
+    <a href="inoperantes.html">Equipamentos inoperantes</a>
+  </nav>
+
+  <main>
+    <h2>Abrir chamado técnico</h2>
+    <p class="dica">Informe qual equipamento está com defeito e descreva o problema.</p>
+
+    <form action="/abrir" method="POST">
+      <label for="equipamento_id">Equipamento</label>
+      <select id="equipamento_id" name="equipamento_id" required>
+        <option value="">Selecione o equipamento...</option>
+        <option value="1">PAT-0001 - Computador - Laboratório 1</option>
+        <option value="2">PAT-0002 - Monitor - Laboratório 1</option>
+        <option value="3">PAT-0105 - Computador - Laboratório 2</option>
+        <option value="4">PAT-0106 - Impressora - Laboratório 2</option>
+        <option value="5">PAT-0210 - Projetor - Laboratório 3</option>
+      </select>
+
+      <label for="descricao_problema">Descrição do problema</label>
+      <textarea id="descricao_problema" name="descricao_problema"
+                rows="5" minlength="10" required
+                placeholder="Ex.: o computador está sem internet desde a aula de ontem"></textarea>
+
+      <button type="submit">Abrir chamado</button>
+    </form>
+  </main>
+
+  <footer>Projeto Final de PA - Etec Prof. Marcos Uchôas dos Santos Penchel - Cachoeira Paulista</footer>
+</body>
+</html>
