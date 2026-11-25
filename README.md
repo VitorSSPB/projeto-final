@@ -18,7 +18,7 @@ Desenvolver um sistema web interno para a Etec que permita ao professor abrir ch
 |---------|----------------------|
 | Professor | Abre o chamado escolhendo a máquina e descrevendo o problema |
 | Técnico de Manutenção | Vê o painel de inoperantes, muda o status e consulta o histórico |
-| Administrador | Cadastra os equipamentos dos laboratórios |
+| Administrador | Cadastra os equipamentos dos laboratórios e os usuários do sistema |
 
 ## Integrantes
 
@@ -50,9 +50,10 @@ Os requisitos completos estão em [docs/requisitos.md](docs/requisitos.md) e o p
 |------------|----------------|
 | Python 3 | Linguagem principal do sistema |
 | Flask | Servidor web e páginas do sistema |
-| MySQL | Banco de dados dos equipamentos e chamados |
+| MySQL | Banco de dados dos equipamentos, chamados e usuários |
 | MySQL Workbench | Criação e visualização do banco |
 | mysql-connector-python | Conexão do Python com o MySQL |
+| Werkzeug (vem com o Flask) | Criptografia das senhas |
 | HTML, CSS e Jinja | Estrutura, aparência e modelos das páginas |
 | Git e GitHub | Versionamento e colaboração |
 | Trello | Gestão das tarefas |
@@ -62,7 +63,7 @@ Os requisitos completos estão em [docs/requisitos.md](docs/requisitos.md) e o p
 ```
 projeto-final/
 |-- app.py                 -> servidor Flask e rotas
-|-- models.py              -> classes Equipamento e Chamado
+|-- models.py              -> classes Equipamento, Chamado e Usuario
 |-- conexao.py             -> conexão com o MySQL
 |-- repositorio.py         -> funções que leem e gravam no banco
 |-- teste_models.py        -> testes das classes
@@ -75,7 +76,7 @@ projeto-final/
 |   |-- banco.sql          -> criação do banco e das tabelas
 |   |-- dados_teste.sql    -> equipamentos e chamados de teste
 |   `-- usuarios.sql       -> tabela de usuários e usuários de teste
-`-- docs/                  -> requisitos, diagramas e imagens
+`-- docs/                  -> requisitos, manual, testes, diagramas e imagens
 ```
 
 ## Modelagem
@@ -88,11 +89,11 @@ projeto-final/
 
 ![Diagrama do banco](docs/diagrama_banco.png)
 
-O banco `controle_lab` tem duas tabelas ligadas por chave estrangeira: um equipamento pode ter vários chamados, e todo chamado pertence a um equipamento. O próprio banco impede patrimônio repetido, chamado de equipamento inexistente e status diferente de **Aberto**, **Em andamento** ou **Resolvido**.
+O banco `controle_lab` tem três tabelas. As tabelas `equipamento` e `chamado` são ligadas por chave estrangeira: um equipamento pode ter vários chamados, e todo chamado pertence a um equipamento. A tabela `usuario` é usada no login e guarda apenas a senha criptografada e o perfil de cada pessoa. O próprio banco impede patrimônio repetido, login repetido, chamado de equipamento inexistente e status diferente de **Aberto**, **Em andamento** ou **Resolvido**.
 
 ## Encapsulamento
 
-As classes `Equipamento` e `Chamado` protegem os dados contra alterações acidentais:
+As classes `Equipamento`, `Chamado` e `Usuario` protegem os dados contra alterações acidentais:
 
 | Classe | Atributo / método | Proteção |
 |--------|-------------------|----------|
@@ -139,11 +140,14 @@ As classes `Equipamento` e `Chamado` protegem os dados contra alterações acide
 
 ## Telas
 
+### Login
+![Login](docs/img/manual/0_login.png)
+
 ### Abertura de chamado
 ![Abrir chamado](docs/img/abrir_chamado.png)
 
 ### Painel de equipamentos inoperantes
-![Painel de inoperantes](docs/img/manual/4_status_atualizado.png)
+![Painel de inoperantes](docs/img/inoperantes.png)
 
 ### Cadastro de equipamento
 ![Cadastrar equipamento](docs/img/cadastrar_equipamento.png)
@@ -151,9 +155,12 @@ As classes `Equipamento` e `Chamado` protegem os dados contra alterações acide
 ### Histórico do equipamento
 ![Histórico](docs/img/manual/5_historico.png)
 
+### Usuários (administrador)
+![Usuários](docs/img/manual/8_usuarios.png)
+
 ## Testes
 
-Os testes do sistema estão em [docs/testes.md](docs/testes.md) e na planilha [docs/planilha_equipamentos_e_testes.xlsx](docs/planilha_equipamentos_e_testes.xlsx): 11 testes executados e 11 aprovados.
+Os testes do sistema estão em [docs/testes.md](docs/testes.md) e na planilha [docs/planilha_equipamentos_e_testes.xlsx](docs/planilha_equipamentos_e_testes.xlsx): 17 testes executados e 17 aprovados. Os dois problemas encontrados nos testes (B01 e B02) foram corrigidos e retestados.
 
 ## Andamento
 
@@ -162,9 +169,10 @@ Os testes do sistema estão em [docs/testes.md](docs/testes.md) e na planilha [d
 | 1 | Planejamento, requisitos, banco de dados, classes e telas em HTML | Concluída |
 | 2 | Flask, conexão com o banco, cadastro de equipamentos, README e diagramas | Concluída |
 | 3 | Integração: formulário gravando no banco, painel com dados reais, status, histórico e manual | Concluída |
-| 4 | Testes, correções, documentação final e ensaios da apresentação | Em andamento |
+| 4 | Testes, correções, login com perfis e documentação final | Concluída |
 
 ## Links
 
+- Repositório no GitHub: https://github.com/VitorSSPB/projeto-final
 - Quadro do Trello: https://trello.com/b/rLoEL3xl/projeto-final
-- Pasta do OneDrive: (em construção)
+- [Pasta do projeto no OneDrive](https://centropaulasouza-my.sharepoint.com/:f:/r/personal/vitor_barbosa11_aluno_cps_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fvitor%5Fbarbosa11%5Faluno%5Fcps%5Fsp%5Fgov%5Fbr%2FDocuments%2FProjeto%20Final%20%2D%20PA&share=cgp36Z3e1UHfS54ww24fpzIMEgUCr7N1nYwhn43BqjsXqwKgqA)

@@ -20,8 +20,8 @@ O sistema tem as telas abaixo, acessadas pelo menu vermelho no topo:
 
 | Tela | Quem usa | Para que serve |
 |------|----------|----------------|
-| Abrir chamado | Professor | Avisar que um equipamento está com defeito |
-| Equipamentos inoperantes | Técnico de manutenção | Ver a fila de manutenção e atualizar o status dos chamados |
+| Abrir chamado | Todos os perfis | Avisar que um equipamento está com defeito |
+| Equipamentos inoperantes | Todos os perfis | Ver a fila de manutenção (só o técnico e o administrador atualizam o status) |
 | Cadastrar equipamento | Administrador | Incluir novos computadores e periféricos |
 | Usuários | Administrador | Cadastrar professores, técnicos e administradores |
 
@@ -48,7 +48,7 @@ O sistema grava o chamado com a data e a hora atuais e o status **Aberto**, e mo
 
 ## 2. Como atender um chamado (técnico de manutenção)
 
-1. Clique em **Equipamentos inoperantes** no menu.
+1. Entre com um usuário de perfil **Técnico** (ou **Administrador**) e clique em **Equipamentos inoperantes** no menu. Para os professores, o painel aparece sem a coluna **Atualizar**.
 2. O painel mostra todos os chamados ainda não resolvidos, do mais antigo para o mais novo. No topo, há um resumo com a quantidade de chamados abertos, em andamento e de laboratórios afetados.
 3. Na coluna **Atualizar**, escolha o novo status do chamado e clique em **Salvar**:
    - **Em andamento:** o técnico começou o conserto.

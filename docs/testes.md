@@ -1,12 +1,12 @@
 # Roteiro de Testes - Controle de Equipamentos de Laboratório
 
-Responsável: Rodrigo
-Data da execução: 25/11/2026
-Versão testada: Entrega 3 (chamado gravado no banco, status no painel e histórico)
+- **Responsável:** Rodrigo
+- **Data da execução:** 25/11/2026
+- **Versão testada:** Entregas 3 e 4 (chamado gravado no banco, status no painel, histórico e login com perfis)
 
 ## Como os testes foram feitos
 
-Cada teste foi executado no sistema rodando pelo Flask (`python app.py`), com o banco carregado pelos scripts `sql/banco.sql` e `sql/dados_teste.sql`. Para cada caso, foi feita a ação descrita e comparado o resultado com o esperado.
+Cada teste foi executado no sistema rodando pelo Flask (`python app.py`), com o banco carregado pelos scripts `sql/banco.sql`, `sql/dados_teste.sql` e `sql/usuarios.sql`. Para cada caso, foi feita a ação descrita e comparado o resultado com o esperado.
 
 ## Casos de teste
 

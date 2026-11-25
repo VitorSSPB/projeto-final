@@ -33,4 +33,6 @@
 
 **Extra, se der tempo:** RF06.
 
+**Extras incluídos na Entrega 4:** RF07, RF08 e RNF07 (login com perfis e senhas criptografadas).
+
 **Situação atual:** todos os requisitos funcionais e não funcionais foram implementados até a Entrega 4.
