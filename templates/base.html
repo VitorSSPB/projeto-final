@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block titulo %}Controle de Equipamentos{% endblock %} - Controle de Equipamentos</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+  <header class="topo">
+    <div class="logos-esquerda">
+      <img src="{{ url_for('static', filename='img/logo_etec.png') }}" alt="Etec Prof. Marcos Uchôas dos Santos Penchel - Cachoeira Paulista">
+    </div>
+    <h1>Controle de Equipamentos de Laboratório
+      <span>Sistema interno de chamados técnicos</span>
+    </h1>
+    <div class="logos-direita">
+      <img src="{{ url_for('static', filename='img/logo_cps.png') }}" alt="Centro Paula Souza">
+      <img src="{{ url_for('static', filename='img/logo_sp.png') }}" alt="Governo do Estado de São Paulo">
+    </div>
+  </header>
+  <nav>
+    <a href="{{ url_for('abrir_chamado') }}" {% if request.endpoint == 'abrir_chamado' %}class="ativo"{% endif %}>Abrir chamado</a>
+    <a href="{{ url_for('inoperantes') }}" {% if request.endpoint == 'inoperantes' %}class="ativo"{% endif %}>Equipamentos inoperantes</a>
+    <a href="{{ url_for('cadastrar_equipamento') }}" {% if request.endpoint == 'cadastrar_equipamento' %}class="ativo"{% endif %}>Cadastrar equipamento</a>
+  </nav>
+
+  <main>
+    {% for mensagem in get_flashed_messages() %}
+      <div class="mensagem">{{ mensagem }}</div>
+    {% endfor %}
+    {% block conteudo %}{% endblock %}
+  </main>
+
+  <footer>Projeto Final de PA - Etec Prof. Marcos Uchôas dos Santos Penchel - Cachoeira Paulista</footer>
+</body>
+</html>

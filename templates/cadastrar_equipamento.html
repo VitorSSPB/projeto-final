@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block titulo %}Cadastrar Equipamento{% endblock %}
+{% block conteudo %}
+<h2>Cadastrar equipamento</h2>
+<p class="dica">Cadastre os computadores e periféricos dos laboratórios.</p>
+
+<form action="{{ url_for('cadastrar_equipamento') }}" method="POST">
+  <label for="patrimonio">Número de patrimônio</label>
+  <input id="patrimonio" name="patrimonio" required maxlength="20" placeholder="Ex.: PAT-0001">
+
+  <label for="laboratorio">Laboratório</label>
+  <select id="laboratorio" name="laboratorio" required>
+    <option value="">Selecione o laboratório...</option>
+    <option>Laboratório 1</option>
+    <option>Laboratório 2</option>
+    <option>Laboratório 3</option>
+  </select>
+
+  <label for="tipo">Tipo</label>
+  <select id="tipo" name="tipo" required>
+    <option value="">Selecione o tipo...</option>
+    <option>Computador</option>
+    <option>Monitor</option>
+    <option>Teclado</option>
+    <option>Mouse</option>
+    <option>Impressora</option>
+    <option>Projetor</option>
+    <option>Outro</option>
+  </select>
+
+  <button type="submit">Cadastrar equipamento</button>
+</form>
+{% endblock %}
