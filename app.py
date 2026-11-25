@@ -1,6 +1,8 @@
+
 from datetime import datetime
 
 from flask import Flask, render_template, request, redirect, url_for, flash
+import repositorio
 
 app = Flask(__name__)
 app.secret_key = "controle-equipamentos-etec"
@@ -37,6 +39,7 @@ def abrir_chamado():
         print("Chamado recebido:", dict(request.form))
         flash("Chamado recebido com sucesso!")
         return redirect(url_for("inoperantes"))
+
     return render_template("abrir_chamado.html", equipamentos=EQUIPAMENTOS_EXEMPLO)
 
 
@@ -51,7 +54,30 @@ def cadastrar_equipamento():
         print("Equipamento recebido:", dict(request.form))
         flash("Equipamento recebido com sucesso!")
         return redirect(url_for("cadastrar_equipamento"))
+
     return render_template("cadastrar_equipamento.html")
+
+
+@app.route("/chamado/<int:chamado_id>/status", methods=["POST"])
+def mudar_status(chamado_id):
+    try:
+        repositorio.atualizar_status(
+            chamado_id,
+            request.form["status_resolucao"]
+        )
+        flash("Status atualizado!")
+
+    except ValueError as erro:
+        flash(str(erro))
+
+    return redirect(url_for("inoperantes"))
+
+
+@app.route("/historico/<int:equipamento_id>")
+def historico(equipamento_id):
+    chamados = repositorio.historico_equipamento(equipamento_id)
+
+    return render_template("historico.html", chamados=chamados)
 
 
 if __name__ == "__main__":
