@@ -208,3 +208,31 @@ footer {
   font-size: 13px;
   margin-bottom: 20px;
 }
+
+.form-status {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+}
+
+.form-status select {
+  padding: 5px;
+  font-size: 13px;
+}
+
+.form-status button {
+  margin-top: 0;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+.status.resolvido {
+  color: #1e7b45;
+  background: #e8f6ec;
+}
+
+td a {
+  color: var(--vermelho-cps);
+  font-weight: bold;
+}

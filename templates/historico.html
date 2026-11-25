@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block titulo %}Histórico{% endblock %}
+{% block conteudo %}
+<h2>Histórico do equipamento {{ equipamento.patrimonio }}</h2>
+<p class="dica">{{ equipamento.tipo }} - {{ equipamento.laboratorio }}</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aberto em</th>
+      <th>Problema</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for c in chamados %}
+    <tr>
+      <td>{{ c.data.strftime('%d/%m/%Y %H:%M') }}</td>
+      <td>{{ c.descricao_problema }}</td>
+      <td><span class="status {{ c.status_resolucao | lower | replace(' ', '-') }}">{{ c.status_resolucao }}</span></td>
+    </tr>
+  {% else %}
+    <tr><td colspan="3">Este equipamento ainda não teve chamados.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<p><a href="{{ url_for('inoperantes') }}">Voltar ao painel</a></p>
+{% endblock %}

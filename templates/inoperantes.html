@@ -19,20 +19,30 @@
       <th>Problema</th>
       <th>Status</th>
       <th>Aberto em</th>
+      <th>Atualizar</th>
     </tr>
   </thead>
   <tbody>
   {% for item in inoperantes %}
     <tr>
-      <td>{{ item.patrimonio }}</td>
+      <td><a href="{{ url_for('historico', equipamento_id=item.equipamento_id) }}">{{ item.patrimonio }}</a></td>
       <td>{{ item.laboratorio }}</td>
       <td>{{ item.tipo }}</td>
       <td>{{ item.descricao_problema }}</td>
       <td><span class="status {{ item.status_resolucao | lower | replace(' ', '-') }}">{{ item.status_resolucao }}</span></td>
-      <td>{{ item.data.strftime('%d/%m/%Y') }}</td>
+      <td>{{ item.data.strftime('%d/%m/%Y %H:%M') }}</td>
+      <td>
+        <form class="form-status" action="{{ url_for('mudar_status', chamado_id=item.chamado_id) }}" method="POST">
+          <select name="status_resolucao">
+            {% if item.status_resolucao == 'Aberto' %}<option>Em andamento</option>{% endif %}
+            <option>Resolvido</option>
+          </select>
+          <button type="submit">Salvar</button>
+        </form>
+      </td>
     </tr>
   {% else %}
-    <tr><td colspan="6">Nenhum equipamento inoperante no momento.</td></tr>
+    <tr><td colspan="7">Nenhum equipamento inoperante no momento.</td></tr>
   {% endfor %}
   </tbody>
 </table>

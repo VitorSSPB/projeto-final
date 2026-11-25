@@ -1,4 +1,3 @@
-
 import mysql.connector
 
 from conexao import conectar
@@ -28,7 +27,7 @@ def salvar_equipamento(equipamento):
         )
         con.commit()
     except mysql.connector.IntegrityError:
-        raise ValueError("Patrimônio já cadastrado.")
+        raise ValueError(f"O patrimônio {equipamento.patrimonio} já está cadastrado.")
     finally:
         con.close()
 
@@ -64,6 +63,19 @@ def listar_inoperantes():
     linhas = cur.fetchall()
     con.close()
     return linhas
+
+
+def buscar_equipamento(equipamento_id):
+    con = conectar()
+    cur = con.cursor(dictionary=True)
+    cur.execute("SELECT * FROM equipamento WHERE id = %s", (equipamento_id,))
+    l = cur.fetchone()
+    con.close()
+
+    if l is None:
+        return None
+
+    return Equipamento(l["patrimonio"], l["laboratorio"], l["tipo"], l["id"])
 
 
 def buscar_chamado(chamado_id):
