@@ -202,6 +202,12 @@ tbody tr:hover {
   margin-bottom: 14px;
 }
 
+.mensagem.erro {
+  background: #fdecea;
+  border-left-color: #c0392b;
+  color: #8c0a09;
+}
+
 footer {
   text-align: center;
   color: #777;

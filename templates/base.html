@@ -26,8 +26,8 @@
   </nav>
 
   <main>
-    {% for mensagem in get_flashed_messages() %}
-      <div class="mensagem">{{ mensagem }}</div>
+    {% for categoria, mensagem in get_flashed_messages(with_categories=true) %}
+      <div class="mensagem {{ categoria }}">{{ mensagem }}</div>
     {% endfor %}
     {% block conteudo %}{% endblock %}
   </main>

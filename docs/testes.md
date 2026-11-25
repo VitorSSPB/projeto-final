@@ -30,7 +30,17 @@ Cada teste foi executado no sistema rodando pelo Flask (`python app.py`), com o 
 
 Os casos de teste passaram, mas durante a execução foram observados dois pontos de melhoria, registrados como cartões com a etiqueta "bug" no Trello:
 
-| Nº | Problema | Gravidade | Responsável |
-|----|----------|-----------|-------------|
-| B01 | As mensagens de erro (descrição curta, patrimônio repetido, equipamento não encontrado) aparecem com a mesma faixa verde das mensagens de sucesso | Baixa (visual) | Vitor |
-| B02 | Se o formulário for enviado com o código de um equipamento que não existe (alterando a página pelo navegador), o banco recusa e o sistema mostra uma página de erro em vez de um aviso | Média | Lucas |
+| Nº | Problema | Gravidade | Responsável | Situação |
+|----|----------|-----------|-------------|----------|
+| B01 | As mensagens de erro (descrição curta, patrimônio repetido, equipamento não encontrado) aparecem com a mesma faixa verde das mensagens de sucesso | Baixa (visual) | Vitor | Corrigido e retestado OK |
+| B02 | Se o formulário for enviado com o código de um equipamento que não existe (alterando a página pelo navegador), o banco recusa e o sistema mostra uma página de erro em vez de um aviso | Média | Lucas | Corrigido e retestado OK |
+
+## Reteste (Entrega 4)
+
+Data: 25/11/2026
+
+| Nº | O que foi refeito | Resultado |
+|----|-------------------|-----------|
+| B01 | Enviar chamado com descrição curta e cadastrar patrimônio repetido | Aviso aparece em vermelho; mensagens de sucesso continuam em verde. OK |
+| B02 | Enviar chamado com um equipamento inexistente | Aparece o aviso "Equipamento não encontrado." e nada é gravado. OK |
+| T01 a T11 | Todos os casos de teste repetidos depois das correções | 11 aprovados. OK |

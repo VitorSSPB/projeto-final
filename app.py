@@ -24,7 +24,7 @@ def abrir_chamado():
             flash("Chamado aberto com sucesso!")
             return redirect(url_for("inoperantes"))
         except ValueError as erro:
-            flash(str(erro))
+            flash(str(erro), "erro")
 
     equipamentos = repositorio.listar_equipamentos()
     return render_template("abrir_chamado.html", equipamentos=equipamentos)
@@ -48,7 +48,7 @@ def cadastrar_equipamento():
             repositorio.salvar_equipamento(equipamento)
             flash(f"Equipamento {equipamento.patrimonio} cadastrado com sucesso!")
         except ValueError as erro:
-            flash(str(erro))
+            flash(str(erro), "erro")
         return redirect(url_for("cadastrar_equipamento"))
 
     return render_template("cadastrar_equipamento.html")
@@ -63,7 +63,7 @@ def mudar_status(chamado_id):
         )
         flash("Status atualizado!")
     except ValueError as erro:
-        flash(str(erro))
+        flash(str(erro), "erro")
 
     return redirect(url_for("inoperantes"))
 
@@ -73,7 +73,7 @@ def historico(equipamento_id):
     """Mostra o histórico de um equipamento."""
     equipamento = repositorio.buscar_equipamento(equipamento_id)
     if equipamento is None:
-        flash("Equipamento não encontrado.")
+        flash("Equipamento não encontrado.", "erro")
         return redirect(url_for("inoperantes"))
 
     chamados = repositorio.historico_equipamento(equipamento_id)
