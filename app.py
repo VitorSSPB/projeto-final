@@ -1,4 +1,3 @@
-
 from datetime import datetime
 
 from flask import Flask, render_template, request, redirect, url_for, flash
@@ -75,9 +74,15 @@ def mudar_status(chamado_id):
 
 @app.route("/historico/<int:equipamento_id>")
 def historico(equipamento_id):
+    equipamento = repositorio.buscar_equipamento(equipamento_id)
+
+    if equipamento is None:
+        flash("Equipamento não encontrado.")
+        return redirect(url_for("inoperantes"))
+
     chamados = repositorio.historico_equipamento(equipamento_id)
 
-    return render_template("historico.html", chamados=chamados)
+    return render_template("historico.html", equipamento=equipamento, chamados=chamados)
 
 
 if __name__ == "__main__":

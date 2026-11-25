@@ -55,6 +55,20 @@ def listar_inoperantes():
     return linhas
 
 
+def buscar_equipamento(equipamento_id):
+    con = conectar()
+    cur = con.cursor(dictionary=True)
+
+    cur.execute("SELECT * FROM equipamento WHERE id = %s", (equipamento_id,))
+    l = cur.fetchone()
+    con.close()
+
+    if l is None:
+        return None
+
+    return Equipamento(l["patrimonio"], l["laboratorio"], l["tipo"], l["id"])
+
+
 def buscar_chamado(chamado_id):
     con = conectar()
     cur = con.cursor(dictionary=True)
@@ -110,4 +124,3 @@ def historico_equipamento(equipamento_id):
     con.close()
 
     return linhas
-
