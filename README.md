@@ -135,6 +135,14 @@ As classes `Equipamento` e `Chamado` protegem os dados contra alterações acide
 ### Histórico do equipamento
 ![Histórico](docs/img/manual/5_historico.png)
 
+## Apresentação
+
+Os slides do pitch final estão em [docs/apresentacao](docs/apresentacao), em PowerPoint e em PDF.
+
+## Testes
+
+Os testes do sistema estão em [docs/testes.md](docs/testes.md) e na planilha [docs/planilha_equipamentos_e_testes.xlsx](docs/planilha_equipamentos_e_testes.xlsx): 11 testes executados e 11 aprovados.
+
 ## Andamento
 
 | Entrega | Conteúdo | Situação |
@@ -142,7 +150,7 @@ As classes `Equipamento` e `Chamado` protegem os dados contra alterações acide
 | 1 | Planejamento, requisitos, banco de dados, classes e telas em HTML | Concluída |
 | 2 | Flask, conexão com o banco, cadastro de equipamentos, README e diagramas | Concluída |
 | 3 | Integração: formulário gravando no banco, painel com dados reais, status, histórico e manual | Concluída |
-| 4 | Testes, correções, documentação final e apresentação | Em andamento |
+| 4 | Testes, correções, documentação final, slides e ensaios da apresentação | Em andamento |
 
 ## Links
 
