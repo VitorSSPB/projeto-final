@@ -31,18 +31,16 @@ Desenvolver um sistema web interno para a Etec que permita ao professor abrir ch
 
 ## Funcionalidades
 
-- [x] Tela de abertura de chamado
-- [x] Painel de equipamentos inoperantes
-- [x] Tela de cadastro de equipamentos
+- [x] Abertura de chamado, gravado no banco de dados
+- [x] Painel de equipamentos inoperantes com os dados reais do banco
+- [x] Alteração do status do chamado pelo painel
+- [x] Cadastro de equipamentos
+- [x] Histórico de chamados por equipamento
 - [x] Classes com encapsulamento (Equipamento e Chamado)
 - [x] Banco de dados MySQL com dados de teste
-- [x] Conexão do Python com o banco de dados
-- [ ] Chamado gravado no banco ao enviar o formulário (Entrega 3)
-- [ ] Painel com os dados reais do banco (Entrega 3)
-- [ ] Alteração do status do chamado (Entrega 3)
-- [ ] Histórico de chamados por equipamento (Entrega 4)
+- [x] Validação dos dados com mensagens de erro claras
 
-Os requisitos completos estão em [docs/requisitos.md](docs/requisitos.md).
+Os requisitos completos estão em [docs/requisitos.md](docs/requisitos.md) e o passo a passo de uso está no [Manual do Usuário](docs/manual_usuario.md).
 
 ## Tecnologias
 
@@ -67,6 +65,7 @@ projeto-final/
 |-- repositorio.py         -> funções que leem e gravam no banco
 |-- teste_models.py        -> testes das classes
 |-- teste_repositorio.py   -> testes do repositório
+|-- teste_status.py        -> testes de status e histórico
 |-- templates/             -> páginas HTML (Jinja)
 |-- static/                -> CSS e logos
 |-- sql/
@@ -114,6 +113,7 @@ As classes `Equipamento` e `Chamado` protegem os dados contra alterações acide
    ```
    python teste_models.py
    python teste_repositorio.py
+   python teste_status.py
    ```
 6. Inicie o sistema:
    ```
@@ -127,10 +127,13 @@ As classes `Equipamento` e `Chamado` protegem os dados contra alterações acide
 ![Abrir chamado](docs/img/abrir_chamado.png)
 
 ### Painel de equipamentos inoperantes
-![Painel de inoperantes](docs/img/inoperantes.png)
+![Painel de inoperantes](docs/img/manual/4_status_atualizado.png)
 
 ### Cadastro de equipamento
 ![Cadastrar equipamento](docs/img/cadastrar_equipamento.png)
+
+### Histórico do equipamento
+![Histórico](docs/img/manual/5_historico.png)
 
 ## Andamento
 
@@ -138,8 +141,8 @@ As classes `Equipamento` e `Chamado` protegem os dados contra alterações acide
 |---------|----------|----------|
 | 1 | Planejamento, requisitos, banco de dados, classes e telas em HTML | Concluída |
 | 2 | Flask, conexão com o banco, cadastro de equipamentos, README e diagramas | Concluída |
-| 3 | Integração: formulário gravando no banco, painel com dados reais e status | Em andamento |
-| 4 | Histórico, correções, documentação final e apresentação | A fazer |
+| 3 | Integração: formulário gravando no banco, painel com dados reais, status, histórico e manual | Concluída |
+| 4 | Testes, correções, documentação final e apresentação | Em andamento |
 
 ## Links
 
