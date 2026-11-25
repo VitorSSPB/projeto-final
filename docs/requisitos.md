@@ -10,6 +10,8 @@
 | RF04 | O técnico deve poder alterar o status do chamado (Aberto -> Em andamento -> Resolvido). | Importante | Feito |
 | RF05 | O sistema deve permitir cadastrar equipamentos (patrimônio, laboratório, tipo). | Importante | Feito |
 | RF06 | O sistema deve mostrar o histórico de chamados de um equipamento. | Desejável | Feito |
+| RF07 | O sistema deve exigir login e liberar cada função conforme o perfil (Professor, Técnico ou Administrador). | Importante | Feito |
+| RF08 | O administrador deve poder cadastrar novos usuários. | Desejável | Feito |
 
 ## Requisitos não funcionais
 
@@ -21,6 +23,7 @@
 | RNF04 | A interface deve ser simples: abrir um chamado em menos de 1 minuto. | Feito |
 | RNF05 | O código deve ser versionado no GitHub com colaboração de todos os integrantes. | Feito |
 | RNF06 | O sistema deve validar os dados e mostrar mensagens de erro claras ao usuário. | Feito |
+| RNF07 | As senhas devem ser guardadas criptografadas no banco de dados. | Feito |
 
 ## Funcionalidades mínimas (MVP)
 
@@ -30,4 +33,4 @@
 
 **Extra, se der tempo:** RF06.
 
-**Situação atual:** todos os requisitos funcionais e não funcionais foram implementados até a Entrega 3.
+**Situação atual:** todos os requisitos funcionais e não funcionais foram implementados até a Entrega 4.

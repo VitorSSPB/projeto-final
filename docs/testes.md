@@ -23,8 +23,14 @@ Cada teste foi executado no sistema rodando pelo Flask (`python app.py`), com o 
 | T09 | Tentar cadastrar com o patrimônio vazio | O sistema não deixa enviar | OK |
 | T10 | Abrir 2 chamados para a mesma máquina | Os dois aparecem no painel | OK |
 | T11 | Clicar em todos os links do menu | Todas as páginas abrem | OK |
+| T12 | Abrir o sistema sem estar logado | Vai para a tela de login | OK |
+| T13 | Entrar com senha errada | Mostra "Login ou senha incorretos." | OK |
+| T14 | Entrar como professor | Painel sem os botões de status e menu sem cadastro | OK |
+| T15 | Como professor, tentar mudar o status ou abrir o cadastro de equipamento | O sistema bloqueia | OK |
+| T16 | Entrar como técnico e mudar o status | Status alterado; cadastro de equipamento e usuários bloqueados | OK |
+| T17 | Entrar como administrador e cadastrar um usuário | Usuário criado, senha guardada criptografada e login repetido bloqueado | OK |
 
-**Resumo:** 11 testes executados, 11 aprovados, 0 reprovados.
+**Resumo:** 17 testes executados, 17 aprovados, 0 reprovados. (T12 a T17 foram incluídos na Entrega 4, junto com o login.)
 
 ## Problemas encontrados
 

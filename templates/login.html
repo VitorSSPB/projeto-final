@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block titulo %}Entrar{% endblock %}
+{% block conteudo %}
+<h2>Entrar no sistema</h2>
+<p class="dica">Use o login e a senha fornecidos pela coordenação.</p>
+
+<form action="{{ url_for('login', proxima=request.args.get('proxima', '')) }}" method="POST" class="form-login">
+  <label for="login">Login</label>
+  <input id="login" name="login" required autofocus autocomplete="username">
+
+  <label for="senha">Senha</label>
+  <input id="senha" name="senha" type="password" required autocomplete="current-password">
+
+  <button type="submit">Entrar</button>
+</form>
+{% endblock %}

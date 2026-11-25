@@ -20,9 +20,15 @@
     </div>
   </header>
   <nav>
-    <a href="{{ url_for('abrir_chamado') }}" {% if request.endpoint == 'abrir_chamado' %}class="ativo"{% endif %}>Abrir chamado</a>
-    <a href="{{ url_for('inoperantes') }}" {% if request.endpoint == 'inoperantes' %}class="ativo"{% endif %}>Equipamentos inoperantes</a>
-    <a href="{{ url_for('cadastrar_equipamento') }}" {% if request.endpoint == 'cadastrar_equipamento' %}class="ativo"{% endif %}>Cadastrar equipamento</a>
+    {% if g.usuario %}
+      {% if g.usuario.pode('abrir_chamado') %}<a href="{{ url_for('abrir_chamado') }}" {% if request.endpoint == 'abrir_chamado' %}class="ativo"{% endif %}>Abrir chamado</a>{% endif %}
+      {% if g.usuario.pode('ver_painel') %}<a href="{{ url_for('inoperantes') }}" {% if request.endpoint == 'inoperantes' %}class="ativo"{% endif %}>Equipamentos inoperantes</a>{% endif %}
+      {% if g.usuario.pode('cadastrar_equipamento') %}<a href="{{ url_for('cadastrar_equipamento') }}" {% if request.endpoint == 'cadastrar_equipamento' %}class="ativo"{% endif %}>Cadastrar equipamento</a>{% endif %}
+      {% if g.usuario.pode('gerenciar_usuarios') %}<a href="{{ url_for('usuarios') }}" {% if request.endpoint == 'usuarios' %}class="ativo"{% endif %}>Usuários</a>{% endif %}
+      <span class="usuario-logado">{{ g.usuario.nome }} ({{ g.usuario.perfil }}) · <a href="{{ url_for('logout') }}">Sair</a></span>
+    {% else %}
+      <a href="{{ url_for('login') }}" class="ativo">Entrar</a>
+    {% endif %}
   </nav>
 
   <main>

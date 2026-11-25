@@ -39,6 +39,8 @@ Desenvolver um sistema web interno para a Etec que permita ao professor abrir ch
 - [x] Classes com encapsulamento (Equipamento e Chamado)
 - [x] Banco de dados MySQL com dados de teste
 - [x] Validação dos dados com mensagens de erro claras
+- [x] Login com perfis (Professor, Técnico e Administrador) e senhas criptografadas
+- [x] Cadastro de usuários pelo administrador
 
 Os requisitos completos estão em [docs/requisitos.md](docs/requisitos.md) e o passo a passo de uso está no [Manual do Usuário](docs/manual_usuario.md).
 
@@ -66,11 +68,13 @@ projeto-final/
 |-- teste_models.py        -> testes das classes
 |-- teste_repositorio.py   -> testes do repositório
 |-- teste_status.py        -> testes de status e histórico
+|-- teste_usuarios.py      -> testes de login e permissões
 |-- templates/             -> páginas HTML (Jinja)
 |-- static/                -> CSS e logos
 |-- sql/
 |   |-- banco.sql          -> criação do banco e das tabelas
-|   `-- dados_teste.sql    -> equipamentos e chamados de teste
+|   |-- dados_teste.sql    -> equipamentos e chamados de teste
+|   `-- usuarios.sql       -> tabela de usuários e usuários de teste
 `-- docs/                  -> requisitos, diagramas e imagens
 ```
 
@@ -99,11 +103,14 @@ As classes `Equipamento` e `Chamado` protegem os dados contra alterações acide
 | Chamado | `descricao_problema` | Mínimo de 10 caracteres |
 | Chamado | `status_resolucao` | Só muda pelo método `alterar_status()` |
 | Chamado | `alterar_status()` | Aceita só status válidos e bloqueia chamados já resolvidos |
+| Usuario | `senha_hash` | Privado e somente leitura; a senha só é definida por `definir_senha()`, que criptografa |
+| Usuario | `perfil` | Aceita apenas Professor, Técnico ou Administrador |
+| Usuario | `pode()` | Diz o que cada perfil tem permissão de fazer |
 
 ## Como executar
 
 1. Instale o **Python 3** e o **MySQL Server** (com o MySQL Workbench).
-2. No MySQL Workbench, execute `sql/banco.sql` e depois `sql/dados_teste.sql`.
+2. No MySQL Workbench, execute `sql/banco.sql`, depois `sql/dados_teste.sql` e por último `sql/usuarios.sql`.
 3. Instale as bibliotecas:
    ```
    pip install flask mysql-connector-python
@@ -114,12 +121,21 @@ As classes `Equipamento` e `Chamado` protegem os dados contra alterações acide
    python teste_models.py
    python teste_repositorio.py
    python teste_status.py
+   python teste_usuarios.py
    ```
 6. Inicie o sistema:
    ```
    python app.py
    ```
-7. Abra **http://127.0.0.1:5000** no navegador.
+7. Abra **http://127.0.0.1:5000** no navegador e entre com um dos usuários abaixo.
+
+### Usuários de teste
+
+| Perfil | Login | Senha | O que pode fazer |
+|--------|-------|-------|------------------|
+| Professor | professor | prof123 | Abrir chamados, ver o painel e o histórico |
+| Técnico | tecnico | tec123 | Tudo do professor e alterar o status dos chamados |
+| Administrador | admin | admin123 | Tudo do técnico, cadastrar equipamentos e usuários |
 
 ## Telas
 

@@ -19,7 +19,7 @@
       <th>Problema</th>
       <th>Status</th>
       <th>Aberto em</th>
-      <th>Atualizar</th>
+      {% if g.usuario.pode('alterar_status') %}<th>Atualizar</th>{% endif %}
     </tr>
   </thead>
   <tbody>
@@ -31,6 +31,7 @@
       <td>{{ item.descricao_problema }}</td>
       <td><span class="status {{ item.status_resolucao | lower | replace(' ', '-') }}">{{ item.status_resolucao }}</span></td>
       <td>{{ item.data.strftime('%d/%m/%Y %H:%M') }}</td>
+      {% if g.usuario.pode('alterar_status') %}
       <td>
         <form class="form-status" action="{{ url_for('mudar_status', chamado_id=item.chamado_id) }}" method="POST">
           <select name="status_resolucao">
@@ -40,9 +41,10 @@
           <button type="submit">Salvar</button>
         </form>
       </td>
+      {% endif %}
     </tr>
   {% else %}
-    <tr><td colspan="7">Nenhum equipamento inoperante no momento.</td></tr>
+    <tr><td colspan="{{ 7 if g.usuario.pode('alterar_status') else 6 }}">Nenhum equipamento inoperante no momento.</td></tr>
   {% endfor %}
   </tbody>
 </table>

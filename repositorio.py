@@ -1,7 +1,7 @@
 import mysql.connector
 
 from conexao import conectar
-from models import Equipamento, Chamado
+from models import Equipamento, Chamado, Usuario
 
 
 def listar_equipamentos():
@@ -132,3 +132,51 @@ def historico_equipamento(equipamento_id):
     linhas = cur.fetchall()
     con.close()
     return linhas
+
+
+def _usuario_da_linha(l):
+    if l is None:
+        return None
+    return Usuario(l["nome"], l["login"], l["perfil"], l["senha_hash"], l["id"])
+
+
+def buscar_usuario_por_login(login):
+    con = conectar()
+    cur = con.cursor(dictionary=True)
+    cur.execute("SELECT * FROM usuario WHERE login = %s", (str(login).strip().lower(),))
+    l = cur.fetchone()
+    con.close()
+    return _usuario_da_linha(l)
+
+
+def buscar_usuario(usuario_id):
+    con = conectar()
+    cur = con.cursor(dictionary=True)
+    cur.execute("SELECT * FROM usuario WHERE id = %s", (usuario_id,))
+    l = cur.fetchone()
+    con.close()
+    return _usuario_da_linha(l)
+
+
+def listar_usuarios():
+    con = conectar()
+    cur = con.cursor(dictionary=True)
+    cur.execute("SELECT * FROM usuario ORDER BY perfil, nome")
+    linhas = cur.fetchall()
+    con.close()
+    return [_usuario_da_linha(l) for l in linhas]
+
+
+def salvar_usuario(usuario):
+    con = conectar()
+    cur = con.cursor()
+    try:
+        cur.execute(
+            "INSERT INTO usuario (nome, login, senha_hash, perfil) VALUES (%s, %s, %s, %s)",
+            (usuario.nome, usuario.login, usuario.senha_hash, usuario.perfil)
+        )
+        con.commit()
+    except mysql.connector.IntegrityError:
+        raise ValueError(f"O login {usuario.login} já está em uso.")
+    finally:
+        con.close()

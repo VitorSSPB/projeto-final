@@ -242,3 +242,27 @@ td a {
   color: var(--vermelho-cps);
   font-weight: bold;
 }
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.usuario-logado {
+  margin-left: auto;
+  color: #fff;
+  font-size: 14px;
+}
+
+.usuario-logado a {
+  margin-right: 0;
+  text-decoration: underline;
+}
+
+.form-login {
+  max-width: 380px;
+}
+
+.subtitulo {
+  margin-top: 30px;
+}

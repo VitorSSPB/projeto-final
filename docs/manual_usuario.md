@@ -2,13 +2,28 @@
 
 Este manual explica como usar o sistema de chamados técnicos dos laboratórios da Etec Prof. Marcos Uchôas dos Santos Penchel.
 
-O sistema tem três telas, acessadas pelo menu vermelho no topo:
+## Como entrar no sistema
+
+Ao abrir o sistema, aparece a tela **Entrar**. Digite o seu **login** e a sua **senha** e clique em **Entrar**. O seu nome e o seu perfil aparecem no canto direito do menu; para sair, clique em **Sair**.
+
+![Tela de login](img/manual/0_login.png)
+
+Cada perfil vê no menu apenas o que tem permissão de usar:
+
+| Perfil | O que pode fazer |
+|--------|------------------|
+| Professor | Abrir chamados, ver o painel e o histórico (sem alterar o status) |
+| Técnico | Tudo do professor e alterar o status dos chamados |
+| Administrador | Tudo do técnico, cadastrar equipamentos e cadastrar usuários |
+
+O sistema tem as telas abaixo, acessadas pelo menu vermelho no topo:
 
 | Tela | Quem usa | Para que serve |
 |------|----------|----------------|
 | Abrir chamado | Professor | Avisar que um equipamento está com defeito |
 | Equipamentos inoperantes | Técnico de manutenção | Ver a fila de manutenção e atualizar o status dos chamados |
 | Cadastrar equipamento | Administrador | Incluir novos computadores e periféricos |
+| Usuários | Administrador | Cadastrar professores, técnicos e administradores |
 
 ---
 
@@ -74,6 +89,16 @@ O sistema mostra a mensagem de confirmação, e o equipamento passa a aparecer n
 
 ---
 
+## 5. Como cadastrar um usuário (administrador)
+
+1. Clique em **Usuários** no menu.
+2. Em **Cadastrar usuário**, preencha o nome, o login, a senha (mínimo de 6 caracteres) e escolha o perfil.
+3. Clique em **Cadastrar usuário**. A pessoa já pode entrar com esse login e senha.
+
+![Tela de usuários](img/manual/8_usuarios.png)
+
+---
+
 ## Mensagens do sistema
 
 | Mensagem | O que significa |
@@ -85,3 +110,6 @@ O sistema mostra a mensagem de confirmação, e o equipamento passa a aparecer n
 | Equipamento PAT-XXXX cadastrado com sucesso! | O equipamento foi incluído |
 | O patrimônio PAT-XXXX já está cadastrado. | Esse número de patrimônio já existe |
 | Equipamento não encontrado. | O histórico pedido é de um equipamento que não existe |
+| Login ou senha incorretos. | O login não existe ou a senha está errada |
+| Seu perfil não tem permissão para esta ação. | A função é de outro perfil (por exemplo, professor tentando mudar o status) |
+| O login XXXX já está em uso. | Já existe um usuário com esse login |
