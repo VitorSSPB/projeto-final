@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+import mysql.connector
+
 import repositorio
 from models import Chamado, Equipamento
 
@@ -76,6 +78,11 @@ def historico(equipamento_id):
 
     chamados = repositorio.historico_equipamento(equipamento_id)
     return render_template("historico.html", equipamento=equipamento, chamados=chamados)
+
+
+@app.errorhandler(mysql.connector.Error)
+def erro_banco(erro):
+    return render_template("erro.html", mensagem="Não foi possível acessar o banco de dados. Verifique se o MySQL está ligado e se a senha em conexao.py está correta."), 500
 
 
 if __name__ == "__main__":

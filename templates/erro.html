@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block titulo %}Erro{% endblock %}
+{% block conteudo %}
+<h2>Ops, algo deu errado</h2>
+<div class="mensagem erro">{{ mensagem }}</div>
+<p><a href="{{ url_for('inoperantes') }}">Tentar novamente</a></p>
+{% endblock %}

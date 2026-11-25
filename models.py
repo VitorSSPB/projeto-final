@@ -57,12 +57,22 @@ class Chamado:
     def __init__(self, equipamento_id, descricao_problema,
                  data=None, status_resolucao="Aberto", id=None):
         if status_resolucao not in self.STATUS_VALIDOS:
-            raise ValueError("Status inválido.")
+            raise ValueError(f"Status inválido: {status_resolucao}")
         self.__id = id
-        self.__equipamento_id = int(equipamento_id)
+        self.__equipamento_id = self.__validar_equipamento_id(equipamento_id)
         self.__data = data or datetime.now()
         self.__status_resolucao = status_resolucao
         self.descricao_problema = descricao_problema
+
+    @staticmethod
+    def __validar_equipamento_id(valor):
+        try:
+            valor = int(valor)
+        except (TypeError, ValueError):
+            raise ValueError("Escolha um equipamento válido.")
+        if valor <= 0:
+            raise ValueError("Escolha um equipamento válido.")
+        return valor
 
     @property
     def id(self):

@@ -22,3 +22,14 @@ try:
     c.alterar_status("Quebrado")
 except ValueError as e:
     print("OK:", e)
+
+try:
+    Chamado("abc", "Equipamento com código inválido.")
+except ValueError as e:
+    print("OK:", e)
+
+try:
+    c.alterar_status("Resolvido")
+    c.alterar_status("Aberto")
+except ValueError as e:
+    print("OK:", e)

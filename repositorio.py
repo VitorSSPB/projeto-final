@@ -37,13 +37,16 @@ def salvar_chamado(chamado):
     con = conectar()
     cur = con.cursor()
 
-    cur.execute(
-        "INSERT INTO chamado (equipamento_id, data, descricao_problema, status_resolucao) VALUES (%s, %s, %s, %s)",
-        (chamado.equipamento_id, chamado.data, chamado.descricao_problema, chamado.status_resolucao)
-    )
-
-    con.commit()
-    con.close()
+    try:
+        cur.execute(
+            "INSERT INTO chamado (equipamento_id, data, descricao_problema, status_resolucao) VALUES (%s, %s, %s, %s)",
+            (chamado.equipamento_id, chamado.data, chamado.descricao_problema, chamado.status_resolucao)
+        )
+        con.commit()
+    except mysql.connector.IntegrityError:
+        raise ValueError("Equipamento não encontrado.")
+    finally:
+        con.close()
 
 
 def listar_inoperantes():
