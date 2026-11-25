@@ -53,3 +53,61 @@ def listar_inoperantes():
     linhas = cur.fetchall()
     con.close()
     return linhas
+
+
+def buscar_chamado(chamado_id):
+    con = conectar()
+    cur = con.cursor(dictionary=True)
+
+    cur.execute("SELECT * FROM chamado WHERE id = %s", (chamado_id,))
+    l = cur.fetchone()
+    con.close()
+
+    if l is None:
+        return None
+
+    return Chamado(
+        l["equipamento_id"],
+        l["descricao_problema"],
+        l["data"],
+        l["status_resolucao"],
+        l["id"]
+    )
+
+
+def atualizar_status(chamado_id, novo_status):
+    chamado = buscar_chamado(chamado_id)
+
+    if chamado is None:
+        raise ValueError("Chamado não encontrado.")
+
+    chamado.alterar_status(novo_status)
+
+    con = conectar()
+    cur = con.cursor()
+
+    cur.execute(
+        "UPDATE chamado SET status_resolucao = %s WHERE id = %s",
+        (chamado.status_resolucao, chamado.id)
+    )
+
+    con.commit()
+    con.close()
+
+
+def historico_equipamento(equipamento_id):
+    con = conectar()
+    cur = con.cursor(dictionary=True)
+
+    cur.execute("""
+        SELECT c.id, c.data, c.descricao_problema, c.status_resolucao,
+               e.patrimonio, e.laboratorio
+        FROM chamado c JOIN equipamento e ON e.id = c.equipamento_id
+        WHERE e.id = %s ORDER BY c.data DESC
+    """, (equipamento_id,))
+
+    linhas = cur.fetchall()
+    con.close()
+
+    return linhas
+
