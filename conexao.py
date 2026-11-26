@@ -4,7 +4,7 @@ import mysql.connector
 CONFIG = {
     "host": "localhost",
     "user": "root",
-    "password": "",
+    "password": "Z1x2c3v4",
     "database": "controle_lab"
 }
 
