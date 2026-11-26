@@ -174,5 +174,5 @@ Os testes do sistema estão em [docs/testes.md](docs/testes.md) e na planilha [d
 ## Links
 
 - Repositório no GitHub: https://github.com/VitorSSPB/projeto-final
-- Quadro do Trello: https://trello.com/b/rLoEL3xl/projeto-final
+- Quadro do Trello: https://trello.com/b/rLoEL3xI/projeto-final
 - [Pasta do projeto no OneDrive](https://centropaulasouza-my.sharepoint.com/:f:/r/personal/vitor_barbosa11_aluno_cps_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fvitor%5Fbarbosa11%5Faluno%5Fcps%5Fsp%5Fgov%5Fbr%2FDocuments%2FProjeto%20Final%20%2D%20PA&share=cgp36Z3e1UHfS54ww24fpzIMEgUCr7N1nYwhn43BqjsXqwKgqA)
